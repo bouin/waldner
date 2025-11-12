@@ -1,0 +1,26 @@
+@import './PageTsConfig/BackendLayouts/'
+
+RTE {
+    default {
+        preset = site_package
+    }
+}
+
+TCEFORM {
+    pages {
+
+    }
+    tt_content {
+
+    }
+}
+
+TCEMAIN.table.tt_content.disablePrependAtCopy = 1
+TCEMAIN.table.pages.disablePrependAtCopy = 1
+
+# Change the showinpreview default behaviour
+TCAdefaults {
+    sys_file_reference {
+        showinpreview = 1
+    }
+}

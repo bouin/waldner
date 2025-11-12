@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-height: 53px; /* Adjust this value to match your header height */
+}
+
+/* First declare the fonts */
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    src: url('../Fonts/HelveticaNeueLTPro-It.woff') format('woff');
+
+}
+
+/* Custom styles */
+@layer base {
+    html, * {
+      letter-spacing: 0.04px;
+      letter-spacing: normal;
+      font-size: 20px;
+      line-height: 1.2em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 300; /* Light */
+    }
+    p {
+        padding-bottom: .8rem;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-optical-sizing: auto;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 300; /* Light */
+    }
+  }
+
+@layer components {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .mainnav-for-a a span{
+        font-size: 75px;
+        font-size: 6.8vw;
+    }
+    @media (max-width: 640px) {
+        .mainnav-for-a a span{
+            font-size: 14vw;
+        }
+    }
+    .static-italic {
+        position: relative;
+    }
+
+    .static-italic::after {
+        content: attr(data-text);
+        font-style: italic;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    figcaption, figcaption * {
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+        font-size: 14px !important;
+    }
+    .filter li, .filter li a {
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+        font-size: 18px !important;
+    }
+    .font-normal {
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+    }
+    .mainnav-for-a-detail, .mainnav-for-a-detail * {
+        font-weight: 400 !important;
+        line-height: 1.2 !important;
+    }
+    #scrollNav a,
+    #scrollNav * {
+        font-weight: 350 !important;
+        line-height: 1.2 !important;
+    }
+    img {
+        transform: translateZ(0);
+        image-rendering: -webkit-optimize-contrast;
+
+    }
+
+}
+
+@media (max-width: 1920px) {
+}
+@media (max-width: 1770px) {
+}
+@media (max-width: 1336px) {
+}
+@media (max-width: 768px) {
+    #heroNav a span {
+        display: inline-block;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+.text-lime-200 {
+    color: #E2FF83 !important;
+}

@@ -1,0 +1,204 @@
+##############
+#### PAGE ####
+##############
+page = PAGE
+page {
+    typeNum = 0
+    shortcutIcon = EXT:site_package/Resources/Public/Favicon/apple-icon-180x180.png
+
+    bodyTagCObject = COA
+    bodyTagCObject {
+        10 = TEXT
+        #10.value = <body id="pageId-{field:uid}" class="parent-{field:pid} page-{field:uid} flex flex-col min-h-screen">
+        10.value = <body id="pageId-{field:uid}" class="parent-{field:pid} page-{field:uid} thisisworking">
+        10.insertData = 1
+    }
+
+    headerData.20 = TEXT
+    headerData.20.value (
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    )
+    
+    headerData.30 = TEXT
+    headerData.30.value (
+        <link rel="apple-touch-icon" sizes="57x57" href="/fileadmin/Favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/fileadmin/Favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/fileadmin/Favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/fileadmin/Favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/fileadmin/Favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/fileadmin/Favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/fileadmin/Favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/fileadmin/Favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/fileadmin/Favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/fileadmin/Favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/fileadmin/Favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/fileadmin/Favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/fileadmin/Favicon/favicon-16x16.png">
+    )
+    
+
+    headerData.5678689 = TEXT
+    headerData.5678689.value (
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-32ZR5E42TP"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-32ZR5E42TP');
+        </script>
+
+    )
+
+    10 = PAGEVIEW
+    10 {
+        paths {
+            0 = EXT:site_package/Resources/Private/PageView/
+            1 = {$page.pageview.paths}
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = media
+                as = media
+            }
+
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                levels = 2
+                includeSpacer = 1
+                as = mainnavigation
+            }
+
+            30 = page-content
+
+            40 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            40 {
+                languages = auto
+                as = languagenavigation
+            }
+
+            60 = menu
+            60 {
+                levels = 2
+                includeSpacer = 1
+                as = menuitemso
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                    10 {
+                        special = list
+                        special.value = 9,10,11,12
+                    }
+                }
+            }
+        }
+    }
+
+    meta {
+        viewport = {$page.meta.viewport}
+        robots = {$page.meta.robots}
+        apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+
+        X-UA-Compatible = {$page.meta.compatible}
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+
+        description = TEXT
+        description {
+            data = field:description // Uses the page-specific meta description
+        }
+        author = Studio Thom Pfister / Dani Hackiewicz 🖤 Made with love
+        keywords.data = TSFE:page|keywords
+        X-UA-Compatible = {$page.meta.compatible}
+        X-UA-Compatible {
+            attribute = http-equiv
+        }
+
+        # OpenGraph Tags
+
+        og:url.data = getIndpEnv:TYPO3_REQUEST_URL
+        og:type = website
+        og:title = TEXT
+        og:title {
+            if.isTrue.data = GP:tx_news_pi1|news
+            data = DB:tx_news_domain_model_news:{GP:tx_news_pi1|news}:header
+            attribute = property
+        }
+        og:description = {$page.meta.description}
+        og:description {
+            attribute = property
+            field = description
+        }
+        og:image {
+            attribute = property
+            stdWrap.cObject = FILES
+            stdWrap.cObject {
+                references {
+                    data = levelfield:-1, media, slide
+                }
+                maxItems = 1
+                renderObj = COA
+                renderObj {
+                    10 = IMG_RESOURCE
+                    10 {
+                        file {
+                            import.data = file:current:uid
+                            treatIdAsReference = 1
+                            width = 1280c
+                            height = 1280c
+                        }
+
+                    }
+                }
+            }
+        }
+
+        # Disable caching for meta tags
+        og:title.stdWrap.insertData = 1
+        og:description.stdWrap.insertData = 1
+        og:image.stdWrap.insertData = 1
+        og:url.stdWrap.insertData = 1
+        og:type.stdWrap.insertData = 1
+    }
+
+    includeCSSLibs {
+        
+    }
+
+    includeCSS {
+        site_package_layout = EXT:site_package/Resources/Public/Css/app.css
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        #flowbite = EXT:site_package/Resources/Public/JavaScript/libs/flowbite.min.js
+        #swiper = EXT:site_package/Resources/Public/JavaScript/libs/swiper-bundle.min.js
+        site_package_scripts = EXT:site_package/Resources/Public/JavaScript/app.js
+        
+    }
+}
+
+
+# Create a TypoScript RECORD
+lib.renderAnyRecord = RECORDS
+lib.renderAnyRecord {
+  source.field = uid
+  dontCheckPid = 1
+  tables = tt_content
+}
+

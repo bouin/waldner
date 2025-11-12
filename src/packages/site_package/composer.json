@@ -1,0 +1,25 @@
+{
+    "name": "studio/site-package",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "homepage": "https://www.studiothompfister.com",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "dev-main",
+    "authors": "Daniel Hackiewicz",
+    "require": {
+        "typo3/cms-core": "^13.4",
+        "typo3/cms-rte-ckeditor": "^13.4",
+        "typo3/cms-fluid-styled-content": "^13.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "StudioThomPfister\\SitePackage\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "site_package"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<f:for each="{records}" as="record" iteration="iterator">
+
+        <f:if condition="{iterator.isFirst}">
+                <f:then>
+
+                    <!-- HERO / FIRST IMAGE -->
+                    <section class="relative">
+                        <f:cObject
+                                typoscriptObjectPath="{record.mainType}"
+                                data="{record}"
+                                table="{record.mainType}"
+                        />
+                    </section>
+                </f:then>
+            <f:else>
+                <section id="work" class="relative z-20">
+                    <f:cObject
+                            typoscriptObjectPath="{record.mainType}"
+                            data="{record}"
+                            table="{record.mainType}"
+                    />
+                </section>
+            </f:else>
+        </f:if>
+
+    <!--<section id="work" class="relative z-20">
+
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 1" class="w-full h-[60vh] sm:h-[90vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 2" class="w-full h-[70vh] sm:h-[110vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 3" class="w-full h-[70vh] sm:h-[110vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 4" class="w-full h-[55vh] sm:h-[90vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 5" class="w-full h-[55vh] sm:h-[90vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+        <figure class="relative">
+            <img src="https://images.unsplash.com/photo-1761939433931-4305ebba3ec9" alt="Work 6" class="w-full h-[70vh] sm:h-[110vh] object-cover" />
+            <figcaption class="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 text-[10px] sm:text-xs text-lime-200 caption-shadow">Lorem ipsum dolorem,<br/>Zurich, Switzerland</figcaption>
+        </figure>
+
+    </section>-->
+</f:for>

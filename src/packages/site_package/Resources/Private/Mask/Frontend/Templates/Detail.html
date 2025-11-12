@@ -1,0 +1,51 @@
+<header id="heroNav" class="fixed top-0 left-0 right-0 z-10">
+    <div class="mx-auto">
+        <div class="mainnav-for-a-detail flex gap-8 px-3 sm:px-3 py-2 justify-between">
+            <div class="[&_*]:text-[14px] font-normal">
+                <f:if condition="{data.tx_mask_add_titiel_elo}">
+                    {data.tx_mask_add_titiel_elo -> f:transform.html()}
+                </f:if>
+            </div>
+            <a href="/work" class="text-[14px] hover:italic" id="backLink">Zurück</a>
+        </div>
+    </div>
+</header>
+
+<main class="mx-auto  px-3 sm:px-6 pt-48">
+    <!-- Image stack -->
+    <section class="space-y-12 sm:space-y-16 grid grid-cols-1">
+        <f:for each="{data.tx_mask_images_for_this_case}" as="file">
+            <f:if condition="{file.properties.width} > {file.properties.height}">
+                <f:then>
+                    <!--Quer-->
+                    <f:image image="{file}" maxWidth="1920" maxHeight="1920" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto object-cover px-0 sm:px-36 pb-20" />
+                </f:then>
+                <f:else>
+                    <!--Hoch-->
+                    <f:image image="{file}" maxWidth="1920" maxHeight="1920" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto object-cover px-8 sm:px-72 pb-20" />
+                </f:else>
+            </f:if>
+
+        </f:for>
+    </section>
+</main>
+
+<script>
+    (function() {
+        const backLink = document.getElementById('backLink');
+        if (!backLink) return;
+
+        backLink.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Prüfe, ob es einen Referrer gibt und ob er von der eigenen Domain kommt
+            if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                // Gehe zurück im Browser-Verlauf (mit Scroll-Position)
+                window.history.back();
+            } else {
+                // Fallback: Navigiere direkt zu /work
+                window.location.href = '/work';
+            }
+        });
+    })();
+</script>

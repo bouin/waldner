@@ -1,0 +1,414 @@
+{
+    "version": "8.1.0",
+    "restructuringDone": false,
+    "tables": {
+        "tt_content": {
+            "elements": {
+                "case_home": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "header",
+                        "tx_mask_home_image",
+                        "tx_mask_small_text_on_image",
+                        "tx_mask_chose_link"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "case_home",
+                    "label": "case home",
+                    "labels": [
+                        "",
+                        "Add image",
+                        "Add text",
+                        "Add link to page"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 0
+                },
+                "detail": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "header",
+                        "tx_mask_add_titiel_elo",
+                        "tx_mask_images_for_this_case"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        "Wont be shown in frontend",
+                        "",
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "detail",
+                    "label": "Detail",
+                    "labels": [
+                        "",
+                        "Add title",
+                        "Add photos"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 2
+                },
+                "info": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "header",
+                        "tx_mask_photo_info",
+                        "tx_mask_text_info",
+                        "tx_mask_clients_first_colum",
+                        "tx_mask_clienst_second_col"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "info",
+                    "label": "Info",
+                    "labels": [
+                        "",
+                        "Add Photo",
+                        "Add Text",
+                        "Add clients (first col)",
+                        "Add clients (second column)"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 3
+                },
+                "work": {
+                    "color": "#000000",
+                    "colorOverlay": "#000000",
+                    "columns": [
+                        "tx_mask_all_cases"
+                    ],
+                    "description": "",
+                    "descriptions": [
+                        ""
+                    ],
+                    "icon": "",
+                    "iconOverlay": "",
+                    "key": "work",
+                    "label": "work",
+                    "labels": [
+                        "Add new case"
+                    ],
+                    "shortLabel": "",
+                    "sorting": 1
+                }
+            },
+            "sql": {
+                "tx_mask_add_titiel_elo": {
+                    "tt_content": {
+                        "tx_mask_add_titiel_elo": "mediumtext"
+                    }
+                },
+                "tx_mask_all_cases": {
+                    "tt_content": {
+                        "tx_mask_all_cases": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_chose_link": {
+                    "tt_content": {
+                        "tx_mask_chose_link": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_clienst_second_col": {
+                    "tt_content": {
+                        "tx_mask_clienst_second_col": "mediumtext"
+                    }
+                },
+                "tx_mask_clients_first_colum": {
+                    "tt_content": {
+                        "tx_mask_clients_first_colum": "mediumtext"
+                    }
+                },
+                "tx_mask_home_image": {
+                    "tt_content": {
+                        "tx_mask_home_image": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_images_for_this_case": {
+                    "tt_content": {
+                        "tx_mask_images_for_this_case": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_photo_info": {
+                    "tt_content": {
+                        "tx_mask_photo_info": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_small_text_on_image": {
+                    "tt_content": {
+                        "tx_mask_small_text_on_image": "mediumtext"
+                    }
+                },
+                "tx_mask_text_info": {
+                    "tt_content": {
+                        "tx_mask_text_info": "mediumtext"
+                    }
+                }
+            },
+            "tca": {
+                "header": {
+                    "coreField": 1,
+                    "fullKey": "header",
+                    "key": "header",
+                    "type": "string"
+                },
+                "tx_mask_add_titiel_elo": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_add_titiel_elo",
+                    "key": "add_titiel_elo",
+                    "type": "richtext"
+                },
+                "tx_mask_all_cases": {
+                    "config": {
+                        "appearance": {
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 0,
+                                "new": 1,
+                                "sort": 1
+                            },
+                            "levelLinksPosition": "top",
+                            "showAllLocalizationLink": 0,
+                            "showNewRecordLink": 1,
+                            "showPossibleLocalizationRecords": 0,
+                            "useSortable": 1
+                        },
+                        "foreign_field": "parentid",
+                        "foreign_sortby": "sorting",
+                        "foreign_table": "--inlinetable--",
+                        "foreign_table_field": "parenttable",
+                        "type": "inline"
+                    },
+                    "fullKey": "tx_mask_all_cases",
+                    "key": "all_cases",
+                    "type": "inline"
+                },
+                "tx_mask_chose_link": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "link"
+                    },
+                    "fullKey": "tx_mask_chose_link",
+                    "key": "chose_link",
+                    "type": "link"
+                },
+                "tx_mask_clienst_second_col": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_clienst_second_col",
+                    "key": "clienst_second_col",
+                    "type": "richtext"
+                },
+                "tx_mask_clients_first_colum": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_clients_first_colum",
+                    "key": "clients_first_colum",
+                    "type": "richtext"
+                },
+                "tx_mask_home_image": {
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "minitems": ""
+                    },
+                    "fullKey": "tx_mask_home_image",
+                    "imageoverlayPalette": 1,
+                    "key": "home_image",
+                    "type": "file"
+                },
+                "tx_mask_images_for_this_case": {
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "minitems": ""
+                    },
+                    "fullKey": "tx_mask_images_for_this_case",
+                    "imageoverlayPalette": 1,
+                    "key": "images_for_this_case",
+                    "type": "file"
+                },
+                "tx_mask_photo_info": {
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "minitems": ""
+                    },
+                    "fullKey": "tx_mask_photo_info",
+                    "imageoverlayPalette": 1,
+                    "key": "photo_info",
+                    "type": "file"
+                },
+                "tx_mask_small_text_on_image": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_small_text_on_image",
+                    "key": "small_text_on_image",
+                    "type": "richtext"
+                },
+                "tx_mask_text_info": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_text_info",
+                    "key": "text_info",
+                    "type": "richtext"
+                }
+            }
+        },
+        "tx_mask_all_cases": {
+            "sql": {
+                "tx_mask_link_for_image": {
+                    "tx_mask_all_cases": {
+                        "tx_mask_link_for_image": "varchar(255) DEFAULT '' NOT NULL"
+                    }
+                },
+                "tx_mask_photo_case": {
+                    "tx_mask_all_cases": {
+                        "tx_mask_photo_case": "int(11) unsigned DEFAULT '0' NOT NULL"
+                    }
+                },
+                "tx_mask_text_on_image": {
+                    "tx_mask_all_cases": {
+                        "tx_mask_text_on_image": "mediumtext"
+                    }
+                }
+            },
+            "tca": {
+                "tx_mask_catgeory": {
+                    "config": {
+                        "relationship": "manyToMany",
+                        "treeConfig": {
+                            "appearance": {
+                                "expandAll": 0,
+                                "nonSelectableLevels": "0",
+                                "showHeader": 0
+                            }
+                        },
+                        "type": "category"
+                    },
+                    "fullKey": "tx_mask_catgeory",
+                    "inlineParent": "tx_mask_all_cases",
+                    "key": "catgeory",
+                    "label": "Add Category",
+                    "order": 1,
+                    "type": "category"
+                },
+                "tx_mask_link_for_image": {
+                    "config": {
+                        "nullable": 0,
+                        "type": "link"
+                    },
+                    "fullKey": "tx_mask_link_for_image",
+                    "inlineParent": "tx_mask_all_cases",
+                    "key": "link_for_image",
+                    "label": "Link for case",
+                    "order": 3,
+                    "type": "link"
+                },
+                "tx_mask_photo_case": {
+                    "config": {
+                        "appearance": {
+                            "elementBrowserEnabled": 1,
+                            "enabledControls": {
+                                "delete": 1,
+                                "dragdrop": 1,
+                                "hide": 1,
+                                "info": 1,
+                                "localize": 1,
+                                "sort": 0
+                            },
+                            "fileUploadAllowed": 1,
+                            "useSortable": 1
+                        },
+                        "minitems": ""
+                    },
+                    "fullKey": "tx_mask_photo_case",
+                    "imageoverlayPalette": 1,
+                    "inlineParent": "tx_mask_all_cases",
+                    "key": "photo_case",
+                    "label": "Add photo for this case",
+                    "order": 4,
+                    "type": "file"
+                },
+                "tx_mask_text_on_image": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_text_on_image",
+                    "inlineParent": "tx_mask_all_cases",
+                    "key": "text_on_image",
+                    "label": "Text for the case",
+                    "order": 2,
+                    "type": "richtext"
+                }
+            }
+        }
+    }
+}

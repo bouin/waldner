@@ -1,0 +1,83 @@
+# =========================================
+# TYPO3 12 .gitignore
+# =========================================
+
+# -----------------------------------------
+# OS / Editor / IDE
+# -----------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+.idea/
+.vscode/
+nbproject/
+*.sublime-workspace
+*.sublime-project
+
+# -----------------------------------------
+# Node / Frontend tools
+# -----------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
+.pnp.js
+.pnpm-debug.log*
+
+# -----------------------------------------
+# Composer
+# -----------------------------------------
+/vendor/
+/composer.lock
+/.composer/
+/composer.phar
+
+# -----------------------------------------
+# TYPO3 system / runtime files
+# -----------------------------------------
+/typo3temp/*
+/var/*
+
+/fileadmin/_processed_/*
+/fileadmin/_temp_/*
+/fileadmin/tmp/*
+/fileadmin/user_upload/_temp_/*
+/uploads/*
+/typo3conf/LocalConfiguration.php
+/typo3conf/AdditionalConfiguration.php
+/typo3conf/PackageStates.php
+
+# -----------------------------------------
+# Cache / Assets
+# -----------------------------------------
+/.ddev/*
+/config/*
+/public/*
+/public/typo3temp/*
+/public/_processed_/*
+/public/_temp_/*
+/public/typo3conf/ext/*/Resources/Public/Generated/*
+/public/fileadmin/_processed_/*
+/public/fileadmin/_temp_/*
+/public/uploads/*
+
+# -----------------------------------------
+# Misc
+# -----------------------------------------
+.env
+/.env.local
+/.env.*.local
+
+# -----------------------------------------
+# Add
+# -----------------------------------------
+!composer.json
+!/src
+!/src*
+/src/packages/site_package/Resources/Public/Tailwind/

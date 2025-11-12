@@ -1,0 +1,172 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<!--
+	=====================
+		News/Detail.html
+-->
+
+<f:section name="content">
+	<f:if condition="{newsItem}">
+		<f:then>
+			<n:format.nothing>
+				<n:excludeDisplayedNews newsItem="{newsItem}" />
+				<f:if condition="{settings.detail.showMetaTags}">
+					<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+				</f:if>
+				<f:comment>
+					<f:if condition="{newsItem.alternativeTitle}">
+						<f:then>
+							<n:titleTag>
+								<f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
+							</n:titleTag>
+						</f:then>
+						<f:else>
+							<n:titleTag>
+								<f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
+							</n:titleTag>
+						</f:else>
+					</f:if>
+				</f:comment>
+			</n:format.nothing>
+			
+			<f:comment>
+			<div class="header">
+				<h1 itemprop="headline">{newsItem.title}</h1>
+			</div>
+			
+			<div class="footer">
+				<p>
+					<!-- date -->
+					<span class="news-list-date">
+						<time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+							<f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+						</time>
+					</span>
+
+					<f:if condition="{newsItem.categories}">
+						<f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" />
+					</f:if>
+					
+						<f:if condition="{newsItem.tags}">
+							<!-- Tags -->
+							<span class="news-list-tags" itemprop="keywords">
+							<f:for each="{newsItem.tags}" as="tag">
+								{tag.title}
+							</f:for>
+							</span>
+						</f:if>
+					
+						<f:if condition="{newsItem.author}">
+							<!-- author -->
+							<span class="news-list-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+								<f:translate key="author_simple" /> <span itemprop="name">{newsItem.author}</span>
+							</span>
+						</f:if>
+					
+				</p>
+			</div>
+			</f:comment>
+			<n:renderMedia news="{newsItem}" imgClass="img-responsive" videoClass="video-wrapper" audioClass="audio-wrapper">
+				<f:comment>
+				<f:if condition="{newsItem.teaser}">
+					<!-- teaser -->
+					<div class="teaser-text" itemprop="description">
+						<f:format.html>{newsItem.teaser}</f:format.html>
+					</div>
+				</f:if>
+				</f:comment>
+
+				<f:if condition="{newsItem.contentElements}">
+					<!-- content elements -->
+					<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+				</f:if>
+
+				<f:comment>
+
+				<f:render partial="Detail/MediaContainer" arguments="{media: newsItem.mediaNonPreviews, settings:settings}" />
+
+				<!-- main text -->
+				
+					<div class="news-text-wrap" itemprop="articleBody">
+						<f:format.html>{newsItem.bodytext}</f:format.html>
+					</div>
+				</f:comment>
+
+			</n:renderMedia>
+
+			<f:if condition="{settings.backPid}">
+				<!-- Link Back -->
+				<div class="news-backlink-wrap">
+					<f:link.page pageUid="{settings.backPid}">
+						<f:translate key="back-link" />
+					</f:link.page>
+				</div>
+			</f:if>
+
+			<f:if condition="{settings.detail.showSocialShareButtons}">
+				<n:extensionLoaded extensionKey="rx_shariff">
+					<f:render partial="Detail/Shariff" />
+				</n:extensionLoaded>
+			</f:if>
+
+			<div class="container">
+				<div class="grid grid-cols-12 p-3 md:p-5">
+					<div class="col-span-3">
+						<p>
+						<a href="/#kaufen" class="link-underline checkifactive link-fixed">Zurück</a>
+					</p>
+				</div>
+				<div class="col-span-6">
+					<f:if condition="{settings.detail.showPrevNext}">
+						<n:simplePrevNext pidList="{newsItem.pid}" news="{newsItem}" as="paginated" sortField="datetime">
+							<f:if condition="{paginated}">
+								<ul class="pager">
+									<f:comment>
+										<f:if condition="{paginated.prev}">
+											<li class="previous">
+												<n:link newsItem="{paginated.prev}" settings="{settings}">
+													<span aria-hidden="true">&larr; </span>Zum vorherigem Objekt
+												</n:link>
+											</li>
+										</f:if>
+									</f:comment>
+									<f:if condition="{paginated.next}">
+										<f:then>
+											<li class="next text-center pb-8">
+												<n:link newsItem="{paginated.next}" settings="{settings}" class="link-underline-fine mail-arrow text-[17px] ">
+													Zum nächsten Objekt ({paginated.next.title})
+												</n:link>
+											</li>
+										</f:then>
+										<f:else>
+											<f:if condition="{paginated.prev}">
+												<li class="text-center pb-8">
+													<n:link newsItem="{paginated.prev}" settings="{settings}" class="link-underline-fine mail-arrow text-[17px] ">
+														Zum vorherigen Objekt ({paginated.prev.title})
+													</n:link>
+												</li>
+											</f:if>
+										</f:else>
+										
+									</f:if>
+								</ul>
+							</f:if>
+						</n:simplePrevNext>
+					</f:if>	
+				</div>
+				<div class="col-span-3">
+				</div>
+			</div>
+			</div>
+		</f:then>
+		<f:else>
+
+		</f:else>
+	</f:if>
+</f:section>
+</html>

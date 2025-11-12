@@ -1,0 +1,17 @@
+<figure class="relative herecheckman">
+    <f:if condition="{data.tx_mask_chose_link}">
+        <f:link.typolink parameter="{data.tx_mask_chose_link}">
+            <f:for each="{data.tx_mask_home_image}" as="file">
+                <f:image image="{file}" width="1920c" height="1280c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full object-cover hidden sm:block" />
+                <f:image image="{file}" width="1080c" height="1350c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full object-cover block sm:hidden" />
+            </f:for>
+            <figcaption class="absolute bottom-2 left-3 sm:left-4 sm:bottom-3 sm:left-4 text-[10px] sm:text-xs text-lime-200 caption-shadow hover:italic tracking-normal [font-kerning:normal]">
+                <f:format.stripTags allowedTags="<br>">
+                    <f:if condition="{data.tx_mask_small_text_on_image}">
+                        {data.tx_mask_small_text_on_image -> f:transform.html()}
+                    </f:if>
+                </f:format.stripTags>
+            </figcaption>
+        </f:link.typolink>
+    </f:if>
+</figure>
