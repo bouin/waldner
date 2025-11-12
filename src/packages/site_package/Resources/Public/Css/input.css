@@ -42,12 +42,12 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    .mainnav-for-a a span{
+    .mainnav-for-a a span, .mainnav-for-a a{
         font-size: 75px;
         font-size: 6.8vw;
     }
     @media (max-width: 640px) {
-        .mainnav-for-a a span{
+        .mainnav-for-a a span, .mainnav-for-a a{
             font-size: 14vw;
         }
     }
@@ -87,10 +87,19 @@
         font-weight: 350 !important;
         line-height: 1.2 !important;
     }
+    #heroNav a,
+    #heroNav * {
+        font-weight: 300 !important;
+        font-synthesis: none !important;
+    }
     img {
         transform: translateZ(0);
         image-rendering: -webkit-optimize-contrast;
-
+    }
+    #heroNav.dteail p, #heroNav.dteail a {
+        font-weight: 350 !important;
+        font-synthesis: none !important;
+        line-height: 1.2 !important;
     }
 
 }

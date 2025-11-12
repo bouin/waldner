@@ -28,16 +28,14 @@
                 <div class="mainnav-for-a flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-8 px-2 sm:px-3 py-1 sm:justify-between">
                     <f:link.page pageUid="1" class="group inline-grid {f:if(condition: '{page.id} == 1', then: 'text-[#E2FF83]')} leading-none">
                         <span class="group-hover:italic leading-[1]">Raffael Waldner</span>
-                        <!--<span class="[grid-area:overlap] italic opacity-0 transition-opacity duration-150 group-hover:opacity-100 leading-[1]">Raffael Waldner</span>-->
                     </f:link.page>
 
-                    <nav class="flex gap-8">
-                        <f:link.page pageUid="2" class="group inline-grid [grid-template-areas:overlap] {f:if(condition: '{page.id} == 1', then: 'text-[#E2FF83]')} leading-none">
-                            <span class="hover:italic leading-[1] uid-{page.id} {f:if(condition: '{page.id} == 2', then: 'italic')}">Work</span>
+                    <nav class="flex gap-8 sm:gap-10">
+                        <f:link.page pageUid="2" class="{f:if(condition: '{page.id} == 2', then: 'italic')} {f:if(condition: '{page.id} == 1', then: 'text-[#E2FF83]')} leading-none hover:italic">
+                            Work
                         </f:link.page>
-                        <f:link.page pageUid="3" class=" group inline-grid [grid-template-areas:overlap] {f:if(condition: '{page.id} == 1', then: 'text-[#E2FF83]')} leading-none">
-                            <span class=" [grid-area:overlap] transition-opacity duration-150 group-hover:opacity-0 leading-[1] {f:if(condition: '{page.id} == 3', then: 'italic')}">Info</span>
-                            <span class=" [grid-area:overlap] italic opacity-0 transition-opacity duration-150 group-hover:opacity-100 leading-[1]">Info</span>
+                        <f:link.page pageUid="3" class=" group inline-grid [grid-template-areas:overlap] {f:if(condition: '{page.id} == 1', then: 'text-[#E2FF83]')} leading-none hover:italic {f:if(condition: '{page.id} == 3', then: 'italic')}">
+                            Info
                         </f:link.page>
                     </nav>
                 </div>

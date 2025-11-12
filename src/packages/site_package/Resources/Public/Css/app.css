@@ -642,13 +642,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mainnav-for-a a span{
+.mainnav-for-a a span, .mainnav-for-a a{
   font-size: 75px;
   font-size: 6.8vw;
 }
 
 @media (max-width: 640px) {
-  .mainnav-for-a a span{
+  .mainnav-for-a a span, .mainnav-for-a a{
     font-size: 14vw;
   }
 }
@@ -700,9 +700,21 @@ figcaption, figcaption * {
   line-height: 1.2 !important;
 }
 
+#heroNav a,
+    #heroNav * {
+  font-weight: 300 !important;
+  font-synthesis: none !important;
+}
+
 img {
   transform: translateZ(0);
   image-rendering: -webkit-optimize-contrast;
+}
+
+#heroNav.dteail p, #heroNav.dteail a {
+  font-weight: 350 !important;
+  font-synthesis: none !important;
+  line-height: 1.2 !important;
 }
 
 .sr-only {
@@ -2729,10 +2741,6 @@ img {
   font-kerning: normal;
 }
 
-.\[grid-area\:overlap\] {
-  grid-area: overlap;
-}
-
 .\[grid-template-areas\:overlap\] {
   grid-template-areas: overlap;
 }
@@ -2791,14 +2799,6 @@ img {
   font-style: italic;
 }
 
-.group:hover .group-hover\:opacity-0 {
-  opacity: 0;
-}
-
-.group:hover .group-hover\:opacity-100 {
-  opacity: 1;
-}
-
 @media (min-width: 640px) {
   .sm\:bottom-3 {
     bottom: 0.75rem;
@@ -2842,6 +2842,10 @@ img {
 
   .sm\:justify-between {
     justify-content: space-between;
+  }
+
+  .sm\:gap-10 {
+    gap: 2.5rem;
   }
 
   .sm\:gap-8 {
