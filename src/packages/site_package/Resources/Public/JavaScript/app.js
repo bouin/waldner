@@ -3,6 +3,7 @@ console.log('Say Hello to the dev: dhackiewicz@gmail.com');
 (function(){
     //const heroSection = document.querySelector('main > section');
     const heroSection = document.querySelector('.herecheckman');
+    console.log(heroSection);
     const heroNav = document.getElementById('heroNav');
     const scrollNav = document.getElementById('scrollNav');
 

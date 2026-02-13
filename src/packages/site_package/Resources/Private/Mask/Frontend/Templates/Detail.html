@@ -1,7 +1,7 @@
 <header id="heroNav" class="fixed top-0 left-0 right-0 z-10 dteail">
     <div class="mx-auto">
         <div class="mainnav-for-a-detail flex gap-8 px-3 sm:px-3 py-2 justify-between">
-            <div class="[&_*]:text-[14px] font-normal">
+            <div class="[&_*]:text-[14px] font-normal mainnav-for-a-detail">
                 <f:if condition="{data.tx_mask_add_titiel_elo}">
                     {data.tx_mask_add_titiel_elo -> f:transform.html()}
                 </f:if>
@@ -10,19 +10,36 @@
         </div>
     </div>
 </header>
+<div class="mt-10 md:mt-10 z-10 dteail">
+    <div class="grid grid-cols-12">
+        <div class="col-span-12 md:col-span-7">
+            <div class="mainnav-for-a-detail flex gap-8 px-3 sm:px-3 py-2 justify-between">
+                <div class="[&_*]:text-[14px] font-normal">
+                    {data.tx_mask_text_to_start -> f:transform.html()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<main class="mx-auto  px-3 sm:px-6 pt-48">
+<main class="mx-auto  px-3 sm:px-6 pt-20 md:pt-24">
     <!-- Image stack -->
     <section class="space-y-12 sm:space-y-16 grid grid-cols-1">
         <f:for each="{data.tx_mask_images_for_this_case}" as="file">
             <f:if condition="{file.properties.width} > {file.properties.height}">
                 <f:then>
                     <!--Quer-->
-                    <f:image image="{file}" maxWidth="1920" maxHeight="1920" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto object-cover px-0 sm:px-36 pb-20" />
+                    <div class="px-0 sm:px-36 pb-20 [&_*]:text-[12px] font-normal">
+                        <f:image image="{file}" width="1920c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto" />
+                        <div class="font-350 pt-1">{file.description}</div>
+                    </div>
                 </f:then>
                 <f:else>
                     <!--Hoch-->
-                    <f:image image="{file}" maxWidth="1920" maxHeight="1920" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto object-cover px-8 sm:px-72 pb-20" />
+                    <div class="elo px-0 sm:px-36 pb-20 [&_*]:text-[12px] font-normal">
+                    <f:image image="{file}" width="1320c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto" />
+                        <div class="font-350 pt-1">{file.description}</div>
+                    </div>
                 </f:else>
             </f:if>
 
@@ -31,19 +48,23 @@
 </main>
 
 <script>
-    (function() {
+    (function () {
         const backLink = document.getElementById('backLink');
         if (!backLink) return;
 
-        backLink.addEventListener('click', function(e) {
+        backLink.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Prüfe, ob es einen Referrer gibt und ob er von der eigenen Domain kommt
-            if (document.referrer && document.referrer.includes(window.location.hostname)) {
-                // Gehe zurück im Browser-Verlauf (mit Scroll-Position)
+            const ref = document.referrer || '';
+
+            // jeżeli referrer to TYPO3 backend → NIE używaj history.back
+            if (
+                ref &&
+                ref.includes(window.location.hostname) &&
+                !ref.includes('/typo3/')
+            ) {
                 window.history.back();
             } else {
-                // Fallback: Navigiere direkt zu /work
                 window.location.href = '/work';
             }
         });

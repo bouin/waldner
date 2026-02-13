@@ -23,7 +23,7 @@
         }
     </style>
     <!-- Page container -->
-    <div class="mx-auto bg-white px-0 sm:px-4 ">
+    <div class="mx-auto bg-white px-0 sm:px-4 sm:pb-0">
         <div class="filter flex justify-end px-4">
             <div class="filter-content flex justify-end">
                 <ul class="flex justify-end pb-4 gap-7 ulnav">
@@ -42,233 +42,239 @@
                 </ul>
             </div>
         </div>
-        <!-- Grid: mobile 1 col, tablet 2 cols, desktop 3 cols -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-0 herecheckman gap-0">
-                <f:if condition="{data.tx_mask_all_cases}">
-                    <f:for each="{data.tx_mask_all_cases}" as="data_item" iteration="it">
+        <div class="relative overflow-hidden">
+            <!-- Biała maska zasłaniająca menu pod całym blokiem -->
+            <div class="pointer-events-none absolute bottom-0 inset-0 bg-white z-10 styleme"></div>
+                <!-- Grid: mobile 1 col, tablet 2 cols, desktop 3 cols -->
+                <div class="all-my-dear-grids grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-0 herecheckman gap-0">
+                    <f:if condition="{data.tx_mask_all_cases}">
+                        <f:for each="{data.tx_mask_all_cases}" as="data_item" iteration="it">
 
-                        <!-- z-index logic -->
-                        <f:if condition="{it.cycle}<4">
-                            <figure class="relative group mb-6 {f:if(condition: '{it.cycle} == 1', then: 'z-0')} {f:if(condition: '{it.cycle} == 2', then: 'z-0 hidden sm:block')} {f:if(condition: '{it.cycle} == 3', then: 'z-0 hidden lg:block')}" data-category-uid="{data_item.tx_mask_catgeory_items.0.uid}">
-                                <f:if condition="{data_item.tx_mask_link_for_image}">
-                                    <f:link.typolink parameter="{data_item.tx_mask_link_for_image}" class="block overflow-hidden">
-                                        <f:for each="{data_item.tx_mask_photo_case}" as="file">
-                                            <f:image
-                                                    image="{file}"
-                                                    width="1000c"
-                                                    height="1370c"
-                                                    class="w-full block h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                                                    loading="lazy"
-                                            />
-                                        </f:for>
-                                    </f:link.typolink>
-                                </f:if>
-
-                                <figcaption class="pointer-events-none absolute left-3 bottom-0 text-[10px] sm:text-xs text-lime-200 caption-shadow  transition-opacity duration-150 block sm:hidden sm:group-hover:block">
-                                    <f:if condition="{data_item.tx_mask_text_on_image}">
-                                        {data_item.tx_mask_text_on_image -> f:transform.html()}
+                            <!-- z-index logic -->
+                            <!--//f:if condition="it.cycle}<4">-->
+                                <figure class="relative group pb-6 cycle-{it.cycle} {f:if(condition: '{it.cycle} == 1', then: 'z-0')} {f:if(condition: '{it.cycle} == 2', then: 'z-0')} {f:if(condition: '{it.cycle} >= 3', then: 'z-20 bg-white')}" data-category-uid="{data_item.tx_mask_catgeory_items.0.uid}">
+                                    <f:if condition="{data_item.tx_mask_link_for_image}">
+                                        <f:link.typolink parameter="{data_item.tx_mask_link_for_image}" class="block overflow-hidden">
+                                            <f:for each="{data_item.tx_mask_photo_case}" as="file">
+                                                <f:image
+                                                        image="{file}"
+                                                        width="1000c"
+                                                        height="1370c"
+                                                        class="w-full block h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                                                        loading="lazy"
+                                                />
+                                            </f:for>
+                                        </f:link.typolink>
                                     </f:if>
-                                </figcaption>
-                            </figure>
-                        </f:if>
-                    </f:for>
-                </f:if>
-        </div>
 
-        <!-- Grid: mobile 1 col, tablet 2 cols, desktop 3 cols -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 bg-white relative z-30 pb-8 px-0 gap-0">
-            <f:if condition="{data.tx_mask_all_cases}">
-                <f:for each="{data.tx_mask_all_cases}" as="data_item" iteration="it">
-                    <f:if condition="{it.cycle}>=2">
-                        <!-- z-index logic -->
-                        <figure class="relative group mb-6 z-20 {f:if(condition: '{it.cycle} == 2', then: 'z-0 block sm:hidden')} {f:if(condition: '{it.cycle} == 3', then: 'block lg:hidden')}" data-category-uid="{data_item.tx_mask_catgeory_items.0.uid}">
-                            <f:if condition="{data_item.tx_mask_link_for_image}">
-                                <f:link.typolink parameter="{data_item.tx_mask_link_for_image}" class="block overflow-hidden">
-                                    <f:for each="{data_item.tx_mask_photo_case}" as="file">
-                                        <f:image
-                                                image="{file}"
-                                                width="1000c"
-                                                height="1370c"
-                                                class="w-full block h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                                                loading="lazy"
-                                        />
-                                    </f:for>
-                                    <figcaption class="pointer-events-none absolute left-3 bottom-0 text-[10px] sm:text-xs text-lime-200 caption-shadow  transition-opacity duration-150 block sm:hidden group-hover:block">
+                                    <figcaption class="pointer-events-none absolute left-3 bottom-5 text-[10px] sm:text-xs text-lime-200 caption-shadow  transition-opacity duration-150 block sm:hidden sm:group-hover:block">
                                         <f:if condition="{data_item.tx_mask_text_on_image}">
                                             {data_item.tx_mask_text_on_image -> f:transform.html()}
                                         </f:if>
                                     </figcaption>
-                                </f:link.typolink>
-                            </f:if>
-
-                        </figure>
+                                </figure>
+                            <!--///f:if>-->
+                        </f:for>
                     </f:if>
-                </f:for>
-            </f:if>
-        </div>
-
+                </div>
+            </div>
     </div>
 </main>
 
 <script>
+
     (function () {
-    const nav = document.querySelector('.ulnav');
-    if (!nav) return;
+        const nav = document.querySelector('.ulnav');
+        if (!nav) return;
 
-    const figures = Array.from(document.querySelectorAll('figure[data-category-uid]'));
-    if (!figures.length) return;
+        const figures = Array.from(document.querySelectorAll('figure[data-category-uid]'));
+        if (!figures.length) return;
 
-    // Wstrzyknij minimalny CSS dla overlay (raz)
-    (function injectStyleOnce(){
-        const id = 'work-filter-overlay-style';
-        if (document.getElementById(id)) return;
-        const style = document.createElement('style');
-        style.id = id;
-        style.textContent = `
-        .figure-filter-overlay {
-            position: absolute;
-            inset: 0;
-            background: #C3D2E2;
-            background: white;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 200ms ease;
-        }
-        .figure-filter-overlay.is-active {
-            opacity: .8;
-            pointer-events: auto;
-        }
-        `;
-        document.head.appendChild(style);
-    })();
+        const hideTimers = new WeakMap();
+        const HIDE_DELAY = 20;
+        let activeFilter = '0';
 
-    // Upewnij się, że każde figure ma relatywny kontekst dla overlay
-    figures.forEach(fig => {
-        const cs = getComputedStyle(fig);
-        if (cs.position === 'static') {
-            fig.style.position = 'relative';
-        }
-        if (!fig.querySelector('.figure-filter-overlay')) {
-            const ov = document.createElement('div');
-            ov.className = 'figure-filter-overlay';
-            fig.appendChild(ov);
-        }
-    });
+        function updateMask() {
+            const mask = document.querySelector('.styleme');
+            if (!mask) return;
 
-    const container = figures[0]?.parentElement;
-    let overlayEnabled = false; // dopiero po wyborze kategorii != '0'
+            const visibleCount = figures.filter(fig =>
+                !fig.classList.contains('is-hidden') &&
+                !fig.classList.contains('is-hiding')
+            ).length;
 
-    function getColumnCount() {
-        if (!container) return 1;
-
-        const fromAttr = parseInt(container.dataset.columns || '', 10);
-        if (!Number.isNaN(fromAttr) && fromAttr > 0) return fromAttr;
-
-        const style = getComputedStyle(container);
-        const gtc = style.gridTemplateColumns;
-
-        if (gtc && gtc !== 'none') {
-            const rep = gtc.match(/repeat\((\d+)\s*,/);
-            if (rep) return parseInt(rep[1], 10);
-            const parts = gtc.trim().split(/\s+(?![^(]*\))/);
-            if (parts.length > 0) return parts.length;
-        }
-        return 1;
-    }
-
-    function setActiveLink(activeUid) {
-        nav.querySelectorAll('a[data-category-main-uid]').forEach(a => {
-            a.classList.toggle('italic', a.dataset.categoryMainUid === activeUid);
-        });
-    }
-
-    function applyZForIndex(fig, i, cols) {
-        fig.classList.toggle('z-0', i < cols);
-        fig.classList.toggle('z-20', i >= cols);
-    }
-
-    // Włącz/wyłącz linki w figure (klawiatura + semantyka)
-    function setDisabled(fig, disabled) {
-        const links = fig.querySelectorAll('a');
-        links.forEach(a => {
-            if (disabled) {
-                a.setAttribute('aria-disabled', 'true');
-                if (!a.hasAttribute('data-prev-tabindex')) {
-                    const prev = a.getAttribute('tabindex');
-                    a.setAttribute('data-prev-tabindex', prev == null ? '' : prev);
-                }
-                a.setAttribute('tabindex', '-1');
+            // show mask only if more than 3 images are visible
+            if (visibleCount > 3) {
+                mask.style.display = 'block';
             } else {
-                a.removeAttribute('aria-disabled');
-                const prev = a.getAttribute('data-prev-tabindex');
-                if (prev === '') a.removeAttribute('tabindex');
-                else if (prev != null) a.setAttribute('tabindex', prev);
-                a.removeAttribute('data-prev-tabindex');
+                mask.style.display = 'none';
             }
-        });
-    }
-
-    function applyOverlay(fig, active) {
-        const ov = fig.querySelector('.figure-filter-overlay');
-        if (!ov) return;
-        ov.classList.toggle('is-active', active);
-        setDisabled(fig, active); // spójnie z overlay
-    }
-
-    function clearAllOverlays() {
-        figures.forEach(fig => applyOverlay(fig, false));
-    }
-
-    function applyFilter(uid) {
-        const showAll = uid === '0';
-        setActiveLink(uid);
-
-        const cols = getColumnCount();
-        figures.forEach((fig, i) => applyZForIndex(fig, i, cols));
-
-        // Overlay tylko gdy włączony i nie "All"
-        if (!overlayEnabled || showAll) {
-            clearAllOverlays();
-            return;
         }
 
-        figures.forEach((fig) => {
-            const match = fig.dataset.categoryUid === uid;
-            applyOverlay(fig, !match); // żółty + blokada na NIEpasujących
-        });
-    }
-
-    function reapplyZIndexForCurrent() {
-        const cols = getColumnCount();
-        figures.forEach((fig, i) => applyZForIndex(fig, i, cols));
-    }
-
-    nav.addEventListener('click', (e) => {
-        const a = e.target.closest('a[data-category-main-uid]');
-        if (!a) return;
-        e.preventDefault();
-        const uid = a.dataset.categoryMainUid || '0';
-        overlayEnabled = uid !== '0'; // włącz po wyborze kategorii
-        applyFilter(uid);
-        if (a.getAttribute('href')) {
-            history.replaceState(null, '', a.getAttribute('href'));
+        function setActiveLink(activeUid) {
+            nav.querySelectorAll('a[data-category-main-uid]').forEach(a => {
+                a.classList.toggle('italic', a.dataset.categoryMainUid === activeUid);
+            });
         }
-    });
 
-    // Start: bez overlay i bez blokad; poprawny z-index
-    const initial = nav.querySelector('a[data-category-main-uid].italic')?.dataset.categoryMainUid
-        || (location.hash && location.hash.replace('#', '')) || '0';
-    setActiveLink(initial);
-    reapplyZIndexForCurrent();
-    clearAllOverlays();
+        function setDisabled(fig, disabled) {
+            const links = fig.querySelectorAll('a');
+            links.forEach(a => {
+                if (disabled) {
+                    a.setAttribute('aria-disabled', 'true');
+                    if (!a.hasAttribute('data-prev-tabindex')) {
+                        const prev = a.getAttribute('tabindex');
+                        a.setAttribute('data-prev-tabindex', prev == null ? '' : prev);
+                    }
+                    a.setAttribute('tabindex', '-1');
+                } else {
+                    a.removeAttribute('aria-disabled');
+                    const prev = a.getAttribute('data-prev-tabindex');
+                    if (prev === '') a.removeAttribute('tabindex');
+                    else if (prev != null) a.setAttribute('tabindex', prev);
+                    a.removeAttribute('data-prev-tabindex');
+                }
+            });
+        }
 
-    // Reaguj na zmianę layoutu (np. resize -> inna liczba kolumn)
-    let resizeRaf = 0;
-    window.addEventListener('resize', () => {
-        if (resizeRaf) cancelAnimationFrame(resizeRaf);
-        resizeRaf = requestAnimationFrame(() => {
+        function hideFigure(fig, immediate = false) {
+            const timer = hideTimers.get(fig);
+            if (timer) {
+                clearTimeout(timer);
+                hideTimers.delete(fig);
+            }
+            setDisabled(fig, true);
+
+            if (immediate) {
+                fig.classList.add('is-hidden');
+                fig.classList.remove('is-hiding');
+                // po natychmiastowym ukryciu – przelicz z-indexy
+                reapplyZIndexForCurrent();
+                return;
+            }
+
+            fig.classList.add('is-hiding');
+            hideTimers.set(fig, window.setTimeout(() => {
+                fig.classList.add('is-hidden');
+                fig.classList.remove('is-hiding');
+                hideTimers.delete(fig);
+
+                // PO zakończeniu animacji:
+                // przelicz kolejność widocznych elementów jeszcze raz
+                reapplyZIndexForCurrent();
+                updateMask(); // <-- ADD THIS
+            }, HIDE_DELAY));
+        }
+
+        function showFigure(fig, immediate = false) {
+            const timer = hideTimers.get(fig);
+            if (timer) {
+                clearTimeout(timer);
+                hideTimers.delete(fig);
+            }
+            fig.classList.remove('is-hidden', 'is-hiding');
+
+            if (!immediate) {
+                requestAnimationFrame(() => fig.classList.remove('is-hiding'));
+            }
+
+            setDisabled(fig, false);
+        }
+
+        // Ile elementów ma mieć z-0, zależnie od breakpointu Tailwinda
+        function getHeroCount() {
+            // lg i wyżej (Tailwind: min-width 1024px)
+            if (window.matchMedia('(min-width: 1024px)').matches) {
+                return 3;
+            }
+            // sm do <lg (640–1023px)
+            if (window.matchMedia('(min-width: 640px)').matches) {
+                return 2;
+            }
+            // poniżej sm (<640px)
+            return 1;
+        }
+
+        function applyFilter(uid, options = {}) {
+            const { immediate = false } = options;
+            const normalized = uid && uid !== '' ? uid : '0';
+            const hasMatchingCategory =
+                normalized === '0' || figures.some(fig => fig.dataset.categoryUid === normalized);
+
+            activeFilter = hasMatchingCategory ? normalized : '0';
+            setActiveLink(activeFilter);
+
+            const showAll = activeFilter === '0';
+            figures.forEach(fig => {
+                const match = showAll || fig.dataset.categoryUid === activeFilter;
+                if (match) {
+                    showFigure(fig, immediate);
+                } else {
+                    hideFigure(fig, immediate);
+                }
+            });
+
+            // pierwszy reflow – dla tych, które już są widoczne
             reapplyZIndexForCurrent();
+            updateMask();
+        }
+
+        // Pierwsze N widocznych (wg getHeroCount) = z-0, reszta = z-20 (+ bg-white)
+        function reapplyZIndexForCurrent() {
+            const maxHero = getHeroCount();
+            let visibleIndex = 0;
+
+            figures.forEach((fig) => {
+                // UWAGA: zarówno is-hidden, jak i is-hiding traktujemy jako "niewidoczne"
+                if (fig.classList.contains('is-hidden') || fig.classList.contains('is-hiding')) {
+                    fig.classList.remove('z-0', 'z-20', 'bg-white');
+                    return;
+                }
+
+                if (visibleIndex < maxHero) {
+                    // hero-row: z-0, bez białego tła
+                    fig.classList.add('z-0');
+                    fig.classList.remove('z-20', 'bg-white');
+                } else {
+                    // reszta: z-20 + bg-white
+                    fig.classList.add('z-20', 'bg-white');
+                    fig.classList.remove('z-0');
+                }
+
+                visibleIndex += 1;
+            });
+        }
+
+        nav.addEventListener('click', (e) => {
+            const a = e.target.closest('a[data-category-main-uid]');
+            if (!a) return;
+            e.preventDefault();
+            const uid = a.dataset.categoryMainUid || '0';
+            applyFilter(uid);
+            //if (a.getAttribute('href')) {
+            //    history.replaceState(null, '', a.getAttribute('href'));
+            // }
         });
-    });
-})();
+
+        // Start: wybierz filtr z hash / italic / domyślne "0"
+        const initial =
+            nav.querySelector('a[data-category-main-uid].italic')?.dataset.categoryMainUid
+            || (location.hash && location.hash.replace('#', ''))
+            || '0';
+
+        applyFilter(initial, { immediate: true });
+
+        // Przy zmianie szerokości – przelicz ile elementów ma być z-0
+        let resizeRaf = 0;
+        window.addEventListener('resize', () => {
+            if (resizeRaf) cancelAnimationFrame(resizeRaf);
+            resizeRaf = requestAnimationFrame(() => {
+                reapplyZIndexForCurrent();
+                updateMask();
+            });
+        });
+    })();
 </script>
+
+
+

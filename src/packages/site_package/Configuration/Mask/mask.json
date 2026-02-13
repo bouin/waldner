@@ -39,11 +39,13 @@
                     "columns": [
                         "header",
                         "tx_mask_add_titiel_elo",
+                        "tx_mask_text_to_start",
                         "tx_mask_images_for_this_case"
                     ],
                     "description": "",
                     "descriptions": [
                         "Wont be shown in frontend",
+                        "",
                         "",
                         ""
                     ],
@@ -54,6 +56,7 @@
                     "labels": [
                         "",
                         "Add title",
+                        "Einleitungstext",
                         "Add photos"
                     ],
                     "shortLabel": "",
@@ -161,6 +164,11 @@
                 "tx_mask_text_info": {
                     "tt_content": {
                         "tx_mask_text_info": "mediumtext"
+                    }
+                },
+                "tx_mask_text_to_start": {
+                    "tt_content": {
+                        "tx_mask_text_to_start": "mediumtext"
                     }
                 }
             },
@@ -317,6 +325,15 @@
                     },
                     "fullKey": "tx_mask_text_info",
                     "key": "text_info",
+                    "type": "richtext"
+                },
+                "tx_mask_text_to_start": {
+                    "config": {
+                        "enableRichtext": 1,
+                        "type": "text"
+                    },
+                    "fullKey": "tx_mask_text_to_start",
+                    "key": "text_to_start",
                     "type": "richtext"
                 }
             }
