@@ -699,6 +699,12 @@ body {
   }
 }
 
+@media (max-width: 600px) {
+  .mainnav-for-a a span, .mainnav-for-a a{
+    font-size: 52px;
+  }
+}
+
 .static-italic {
   position: relative;
 }
@@ -765,6 +771,62 @@ img {
 
 .font-350 {
   font-weight: 350 !important;
+}
+
+.all-my-dear-grids {
+  line-height: 0;
+}
+
+.all-my-dear-grids img {
+  display: block;
+  vertical-align: bottom;
+}
+
+.work-detail-nav .active a {
+  /*background-color: #E2FF83 !important;*/
+  padding-left: 10px;
+}
+
+.work-detail-nav a {
+  transition: all 0.1s ease-in-out;
+}
+
+.work-detail-nav a:hover  {
+  /*background-color: #E2FF83 !important;*/
+  padding-left: 10px;
+}
+
+.work-detail-nav .work-group-title {
+  padding-top: 10px;
+}
+
+.work-detail-nav .work-group-title:first-of-type {
+  padding-top: 0px !important;
+}
+
+.work-detail-nav li.active a::before {
+  content: "→";
+  margin-right: 0.35rem;
+}
+
+.work-detail-nav {
+  -moz-column-count: 1;
+       column-count: 1;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .work-detail-nav {
+    -moz-column-count: 2;
+         column-count: 2;
+  }
+}
+
+.work-detail-nav li,
+    .work-detail-nav .work-group-title {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
 }
 
 .sr-only {
@@ -1049,6 +1111,14 @@ img {
 
 .float-none {
   float: none;
+}
+
+.\!-m-1 {
+  margin: -0.25rem !important;
+}
+
+.\!m-0 {
+  margin: 0px !important;
 }
 
 .m-0 {
@@ -1912,6 +1982,10 @@ img {
   border-color: rgb(74 222 128 / var(--tw-border-opacity, 1));
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
@@ -2245,8 +2319,16 @@ img {
   padding-left: 0.75rem;
 }
 
+.pl-4 {
+  padding-left: 1rem;
+}
+
 .pl-5 {
   padding-left: 1.25rem;
+}
+
+.pl-8 {
+  padding-left: 2rem;
 }
 
 .pr-0 {
@@ -2397,6 +2479,10 @@ img {
   padding-top: 5vw;
 }
 
+.\!pb-1 {
+  padding-bottom: 0.25rem !important;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2473,6 +2559,10 @@ img {
   font-size: 14px;
 }
 
+.text-\[16px\] {
+  font-size: 16px;
+}
+
 .text-\[17px\] {
   font-size: 17px;
 }
@@ -2506,6 +2596,14 @@ img {
   line-height: 1rem;
 }
 
+.text-\[20px\] {
+  font-size: 20px;
+}
+
+.\!text-\[14px\] {
+  font-size: 14px !important;
+}
+
 .\!font-normal {
   font-weight: 400 !important;
 }
@@ -2526,12 +2624,20 @@ img {
   font-weight: 600;
 }
 
+.\!font-\[350\] {
+  font-weight: 350 !important;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
 
 .italic {
   font-style: italic;
+}
+
+.\!italic {
+  font-style: italic !important;
 }
 
 .leading-6 {
@@ -2646,6 +2752,10 @@ img {
   text-decoration-line: underline;
 }
 
+.\!underline {
+  text-decoration-line: underline !important;
+}
+
 .no-underline {
   text-decoration-line: none;
 }
@@ -2702,6 +2812,14 @@ img {
 
 .outline {
   outline-style: solid;
+}
+
+.outline-1 {
+  outline-width: 1px;
+}
+
+.outline-transparent {
+  outline-color: transparent;
 }
 
 .ring-4 {
@@ -2791,6 +2909,15 @@ img {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.will-change-transform {
+  will-change: transform;
+}
+
+.contain-paint {
+  --tw-contain-paint: paint;
+  contain: var(--tw-contain-size) var(--tw-contain-layout) var(--tw-contain-paint) var(--tw-contain-style);
+}
+
 .\[font-kerning\:normal\] {
   font-kerning: normal;
 }
@@ -2849,6 +2976,14 @@ img {
 
   .white-bg-elo {
     display: none !important;
+  }
+
+  .manu-nav {
+    display: none;
+  }
+
+  section main {
+    padding-bottom: 30px;
   }
 }
 
@@ -2919,8 +3054,16 @@ img {
     left: 1rem;
   }
 
+  .sm\:mt-4 {
+    margin-top: 1rem;
+  }
+
   .sm\:block {
     display: block;
+  }
+
+  .sm\:flex {
+    display: flex;
   }
 
   .sm\:hidden {
@@ -2953,6 +3096,10 @@ img {
 
   .sm\:gap-10 {
     gap: 2.5rem;
+  }
+
+  .sm\:gap-7 {
+    gap: 1.75rem;
   }
 
   .sm\:gap-8 {
@@ -2990,8 +3137,21 @@ img {
     padding-right: 18rem;
   }
 
+  .sm\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
   .sm\:pb-0 {
     padding-bottom: 0px;
+  }
+
+  .sm\:pl-0 {
+    padding-left: 0px;
+  }
+
+  .sm\:pt-8 {
+    padding-top: 2rem;
   }
 
   .sm\:text-xs {
@@ -3057,8 +3217,8 @@ img {
     margin-bottom: 1.5rem;
   }
 
-  .md\:mt-10 {
-    margin-top: 2.5rem;
+  .md\:mt-0 {
+    margin-top: 0px;
   }
 
   .md\:block {
@@ -3093,6 +3253,12 @@ img {
     gap: 1.25rem;
   }
 
+  .md\:space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+  }
+
   .md\:p-0 {
     padding: 0px;
   }
@@ -3111,6 +3277,10 @@ img {
 
   .md\:pb-2 {
     padding-bottom: 0.5rem;
+  }
+
+  .md\:pb-20 {
+    padding-bottom: 5rem;
   }
 
   .md\:pb-24 {
@@ -3133,12 +3303,24 @@ img {
     padding-top: 2.5rem;
   }
 
+  .md\:pt-20 {
+    padding-top: 5rem;
+  }
+
   .md\:pt-24 {
     padding-top: 6rem;
   }
 
   .md\:pt-5 {
     padding-top: 1.25rem;
+  }
+
+  .md\:pt-52 {
+    padding-top: 13rem;
+  }
+
+  .md\:text-\[14px\] {
+    font-size: 14px;
   }
 }
 
@@ -3291,16 +3473,16 @@ img {
   font-size: 16px;
 }
 
-.\[\&_\*\]\:text-\[7\.8vw\] * {
-  font-size: 7.8vw;
+.\[\&_\*\]\:text-\[5\.8vw\] * {
+  font-size: 5.8vw;
 }
 
 .\[\&_\*\]\:text-\[clamp\(14px\2c 2\.2vw\2c 17px\)\] * {
   font-size: clamp(14px,2.2vw,17px);
 }
 
-.\[\&_\*\]\:text-\[12px\] * {
-  font-size: 12px;
+.\[\&_\*\]\:font-\[350\] * {
+  font-weight: 350;
 }
 
 .\[\&_\*\]\:leading-\[1\.1\] * {
@@ -3312,12 +3494,22 @@ img {
 }
 
 @media (min-width: 640px) {
-  .sm\:\[\&_\*\]\:text-\[6\.8vw\] * {
-    font-size: 6.8vw;
+  .sm\:\[\&_\*\]\:text-\[34px\] * {
+    font-size: 34px;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:\[\&_\*\]\:text-\[12px\] * {
+    font-size: 12px;
   }
 
-  .sm\:\[\&_\*\]\:text-\[68px\] * {
-    font-size: 68px;
+  .md\:\[\&_\*\]\:text-\[13px\] * {
+    font-size: 13px;
+  }
+
+  .md\:\[\&_\*\]\:text-\[14px\] * {
+    font-size: 14px;
   }
 }
 
@@ -3325,6 +3517,30 @@ img {
   font-style: italic;
 }
 
+.\[\&_a\:hover\]\:\!italic a:hover {
+  font-style: italic !important;
+}
+
+.\[\&_a\]\:\!text-\[20px\] a {
+  font-size: 20px !important;
+}
+
+.\[\&_a\]\:\!text-\[14px\] a {
+  font-size: 14px !important;
+}
+
+.\[\&_a\]\:\!text-\[13px\] a {
+  font-size: 13px !important;
+}
+
+.\[\&_a\]\:\!underline a {
+  text-decoration-line: underline !important;
+}
+
 .\[\&_p\]\:\!mb-0 p {
   margin-bottom: 0px !important;
+}
+
+.\[\&_p\]\:\!pb-1 p {
+  padding-bottom: 0.25rem !important;
 }

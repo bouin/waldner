@@ -1,4 +1,4 @@
-<main class="pt-52">
+<main class="pt-40 md:pt-52">
     <!-- Animations for filtering -->
     <style>
         /* Smooth hide/show animations (works fine with Tailwind) */
@@ -26,9 +26,12 @@
     <div class="mx-auto bg-white px-0 sm:px-4 sm:pb-0">
         <div class="filter flex justify-end px-4">
             <div class="filter-content flex justify-end">
-                <ul class="flex justify-end pb-4 gap-7 ulnav">
+                <ul class="flex justify-end pb-4 gap-4 sm:gap-7 ulnav flex-wrap pl-8 sm:pl-0">
                     <li>
                         <a href="#all" class="hover:italic" data-category-main-uid="0">Alle</a>
+                    </li>
+                    <li>
+                        <a href="#corporate" class="hover:italic" data-category-main-uid="5">Corporate</a>
                     </li>
                     <li>
                         <a href="#architecture" class="hover:italic" data-category-main-uid="2">Architektur</a>
@@ -43,41 +46,44 @@
             </div>
         </div>
         <div class="relative overflow-hidden">
-            <!-- Biała maska zasłaniająca menu pod całym blokiem -->
-            <div class="pointer-events-none absolute bottom-0 inset-0 bg-white z-10 styleme"></div>
-                <!-- Grid: mobile 1 col, tablet 2 cols, desktop 3 cols -->
-                <div class="all-my-dear-grids grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-0 herecheckman gap-0">
-                    <f:if condition="{data.tx_mask_all_cases}">
-                        <f:for each="{data.tx_mask_all_cases}" as="data_item" iteration="it">
 
-                            <!-- z-index logic -->
-                            <!--//f:if condition="it.cycle}<4">-->
-                                <figure class="relative group pb-6 cycle-{it.cycle} {f:if(condition: '{it.cycle} == 1', then: 'z-0')} {f:if(condition: '{it.cycle} == 2', then: 'z-0')} {f:if(condition: '{it.cycle} >= 3', then: 'z-20 bg-white')}" data-category-uid="{data_item.tx_mask_catgeory_items.0.uid}">
-                                    <f:if condition="{data_item.tx_mask_link_for_image}">
-                                        <f:link.typolink parameter="{data_item.tx_mask_link_for_image}" class="block overflow-hidden">
-                                            <f:for each="{data_item.tx_mask_photo_case}" as="file">
-                                                <f:image
-                                                        image="{file}"
-                                                        width="1000c"
-                                                        height="1370c"
-                                                        class="w-full block h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                                                        loading="lazy"
-                                                />
-                                            </f:for>
-                                        </f:link.typolink>
-                                    </f:if>
+            <div class="pointer-events-none absolute bottom-0 inset-0 z-10 styleme"></div>
+            <!-- Grid: mobile 1 col, tablet 2 cols, desktop 3 cols -->
+            <div class="all-my-dear-grids grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-0 herecheckman gap-0">
+                <f:if condition="{data.tx_mask_all_cases}">
+                    <f:for each="{data.tx_mask_all_cases}" as="data_item" iteration="it">
 
-                                    <figcaption class="pointer-events-none absolute left-3 bottom-5 text-[10px] sm:text-xs text-lime-200 caption-shadow  transition-opacity duration-150 block sm:hidden sm:group-hover:block">
-                                        <f:if condition="{data_item.tx_mask_text_on_image}">
-                                            {data_item.tx_mask_text_on_image -> f:transform.html()}
-                                        </f:if>
-                                    </figcaption>
-                                </figure>
-                            <!--///f:if>-->
-                        </f:for>
-                    </f:if>
-                </div>
+                        <!-- z-index logic -->
+                        <!--//f:if condition="it.cycle}<4">-->
+                        <div class="!m-0 pb-6 relative group cycle-{it.cycle} {f:if(condition: '{it.cycle} == 1', then: 'z-0')} {f:if(condition: '{it.cycle} == 2', then: 'z-0')} {f:if(condition: '{it.cycle} >= 3', then: 'z-20 bg-white')}" data-category-uid="{data_item.tx_mask_catgeory_items.0.uid}">
+                            <f:if condition="{data_item.tx_mask_link_for_image}">
+                                <f:link.typolink parameter="{data_item.tx_mask_link_for_image}" class="block overflow-hidden leading-none bg-black ">
+                                    <f:for each="{data_item.tx_mask_photo_case}" as="file">
+                                        <div class="object-cover transition-transform group-hover:scale-[1.01]">
+                                            <f:image
+                                                    image="{file}"
+                                                    width="690c"
+                                                    height="910c"
+                                                    class="w-full block h-auto  duration-300"
+                                                    loading="lazy"
+                                                    fileExtension="webp"
+                                            />
+                                        </div>
+                                    </f:for>
+                                </f:link.typolink>
+                            </f:if>
+
+                            <figcaption class="pointer-events-none absolute left-3 bottom-5 text-[10px] sm:text-xs text-lime-200 caption-shadow  transition-opacity duration-150 block sm:hidden sm:group-hover:block">
+                                <f:if condition="{data_item.tx_mask_text_on_image}">
+                                    {data_item.tx_mask_text_on_image -> f:transform.html()}
+                                </f:if>
+                            </figcaption>
+                        </div>
+                        <!--///f:if>-->
+                    </f:for>
+                </f:if>
             </div>
+        </div>
     </div>
 </main>
 
@@ -87,7 +93,7 @@
         const nav = document.querySelector('.ulnav');
         if (!nav) return;
 
-        const figures = Array.from(document.querySelectorAll('figure[data-category-uid]'));
+        const figures = Array.from(document.querySelectorAll('div[data-category-uid]'));
         if (!figures.length) return;
 
         const hideTimers = new WeakMap();
@@ -148,7 +154,7 @@
             if (immediate) {
                 fig.classList.add('is-hidden');
                 fig.classList.remove('is-hiding');
-                // po natychmiastowym ukryciu – przelicz z-indexy
+
                 reapplyZIndexForCurrent();
                 return;
             }
@@ -159,8 +165,6 @@
                 fig.classList.remove('is-hiding');
                 hideTimers.delete(fig);
 
-                // PO zakończeniu animacji:
-                // przelicz kolejność widocznych elementów jeszcze raz
                 reapplyZIndexForCurrent();
                 updateMask(); // <-- ADD THIS
             }, HIDE_DELAY));
@@ -181,17 +185,16 @@
             setDisabled(fig, false);
         }
 
-        // Ile elementów ma mieć z-0, zależnie od breakpointu Tailwinda
         function getHeroCount() {
-            // lg i wyżej (Tailwind: min-width 1024px)
+            // lg and more (Tailwind: min-width 1024px)
             if (window.matchMedia('(min-width: 1024px)').matches) {
                 return 3;
             }
-            // sm do <lg (640–1023px)
+            // sm zu <lg (640–1023px)
             if (window.matchMedia('(min-width: 640px)').matches) {
                 return 2;
             }
-            // poniżej sm (<640px)
+            // less than sm (<640px)
             return 1;
         }
 
@@ -219,24 +222,23 @@
             updateMask();
         }
 
-        // Pierwsze N widocznych (wg getHeroCount) = z-0, reszta = z-20 (+ bg-white)
         function reapplyZIndexForCurrent() {
             const maxHero = getHeroCount();
             let visibleIndex = 0;
 
             figures.forEach((fig) => {
-                // UWAGA: zarówno is-hidden, jak i is-hiding traktujemy jako "niewidoczne"
+
                 if (fig.classList.contains('is-hidden') || fig.classList.contains('is-hiding')) {
                     fig.classList.remove('z-0', 'z-20', 'bg-white');
                     return;
                 }
 
                 if (visibleIndex < maxHero) {
-                    // hero-row: z-0, bez białego tła
+
                     fig.classList.add('z-0');
                     fig.classList.remove('z-20', 'bg-white');
                 } else {
-                    // reszta: z-20 + bg-white
+
                     fig.classList.add('z-20', 'bg-white');
                     fig.classList.remove('z-0');
                 }
@@ -251,12 +253,10 @@
             e.preventDefault();
             const uid = a.dataset.categoryMainUid || '0';
             applyFilter(uid);
-            //if (a.getAttribute('href')) {
-            //    history.replaceState(null, '', a.getAttribute('href'));
-            // }
+
         });
 
-        // Start: wybierz filtr z hash / italic / domyślne "0"
+
         const initial =
             nav.querySelector('a[data-category-main-uid].italic')?.dataset.categoryMainUid
             || (location.hash && location.hash.replace('#', ''))
@@ -264,7 +264,7 @@
 
         applyFilter(initial, { immediate: true });
 
-        // Przy zmianie szerokości – przelicz ile elementów ma być z-0
+
         let resizeRaf = 0;
         window.addEventListener('resize', () => {
             if (resizeRaf) cancelAnimationFrame(resizeRaf);

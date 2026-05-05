@@ -1,20 +1,34 @@
-<header id="heroNav" class="fixed top-0 left-0 right-0 z-10 dteail">
+<header id="heroNav-{data.uid}" class="fixed top-0 left-0 right-0 z-10 dteail thisisthetitle-i-told-you-about">
     <div class="mx-auto">
-        <div class="mainnav-for-a-detail flex gap-8 px-3 sm:px-3 py-2 justify-between">
-            <div class="[&_*]:text-[14px] font-normal mainnav-for-a-detail">
+        <div class="mainnav-for-a-detail flex flex-col sm:flex-row gap-3 sm:gap-8 px-3 sm:px-3 py-2 sm:justify-between">
+            <div class="flex gap-2 items-center text-[16px] md:text-[14px] visible sm:hidden">
+                <f:link.page pageUid="1" class="text-[16px] md:text-[14px] hover:italic">Home</f:link.page>
+                <f:link.page pageUid="2" class="text-[16px] md:text-[14px] hover:italic">Work</f:link.page>
+                <f:link.page pageUid="3" class="text-[16px] md:text-[14px] hover:italic">Info</f:link.page>
+                <a href="#" class="text-[16px] md:text-[14px] hover:italic" id="backLink-{data.uid}">Zurück</a>
+            </div>
+
+            <div class="[&_*]:text-[16px] md:[&_*]:text-[14px] font-normal mainnav-for-a-detail">
                 <f:if condition="{data.tx_mask_add_titiel_elo}">
                     {data.tx_mask_add_titiel_elo -> f:transform.html()}
                 </f:if>
             </div>
-            <a href="/work" class="text-[14px] hover:italic" id="backLink">Zurück</a>
+
+            <div class="flex gap-2 items-center text-[16px] md:text-[14px] hidden sm:flex">
+                <f:link.page pageUid="1" class="text-[16px] md:text-[14px] hover:italic">Home</f:link.page>
+                <f:link.page pageUid="2" class="text-[16px] md:text-[14px] hover:italic">Work</f:link.page>
+                <f:link.page pageUid="3" class="text-[16px] md:text-[14px] hover:italic">Info</f:link.page>
+                <a href="#" class="text-[16px] md:text-[14px] hover:italic" id="backLink-add-{data.uid}">Zurück</a>
+            </div>
         </div>
+
     </div>
 </header>
-<div class="mt-10 md:mt-10 z-10 dteail">
+<div class="mt-4 sm:mt-4 md:mt-0 z-10 dteail">
     <div class="grid grid-cols-12">
         <div class="col-span-12 md:col-span-7">
             <div class="mainnav-for-a-detail flex gap-8 px-3 sm:px-3 py-2 justify-between">
-                <div class="[&_*]:text-[14px] font-normal">
+                <div class="[&_*]:text-[16px] md:[&_*]:text-[14px] font-normal">
                     {data.tx_mask_text_to_start -> f:transform.html()}
                 </div>
             </div>
@@ -22,22 +36,22 @@
     </div>
 </div>
 
-<main class="mx-auto  px-3 sm:px-6 pt-20 md:pt-24">
+<main class="mx-auto  px-3 sm:px-6 md:pt-20 md:pt-24">
     <!-- Image stack -->
-    <section class="space-y-12 sm:space-y-16 grid grid-cols-1">
+    <section class="md:space-y-12 sm:space-y-16 grid grid-cols-1">
         <f:for each="{data.tx_mask_images_for_this_case}" as="file">
             <f:if condition="{file.properties.width} > {file.properties.height}">
                 <f:then>
                     <!--Quer-->
-                    <div class="px-0 sm:px-36 pb-20 [&_*]:text-[12px] font-normal">
+                    <div class="px-0 sm:px-36 pb-6 md:pb-20 [&_*]:text-[14px] md:[&_*]:text-[12px] font-normal">
                         <f:image image="{file}" width="1920c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto" />
                         <div class="font-350 pt-1">{file.description}</div>
                     </div>
                 </f:then>
                 <f:else>
                     <!--Hoch-->
-                    <div class="elo px-0 sm:px-36 pb-20 [&_*]:text-[12px] font-normal">
-                    <f:image image="{file}" width="1320c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto" />
+                    <div class="elo px-0 sm:px-36 pb-6 md:pb-20 [&_*]:text-[14px] md:[&_*]:text-[12px] font-normal">
+                        <f:image image="{file}" width="1320c" alt="{file.alternative}" loading="lazy" decoding="async" class="w-full h-auto" />
                         <div class="font-350 pt-1">{file.description}</div>
                     </div>
                 </f:else>
@@ -45,28 +59,39 @@
 
         </f:for>
     </section>
+
 </main>
+
+<div class="manu-nav px-3 sm:px-3 py-2">
+    <div class="[&amp;_*]:text-[13px] md:[&amp;_*]:text-[13px] pb-12 [&amp;_*]:text-[13px] [&_*]:font-[350]">
+        <p class="mt-10 mb-2">Works</p>
+
+        <!-- Clients list: responsive multi-column grid -->
+        <f:cObject typoscriptObjectPath="lib.allWorkDetails" />
+        <f:comment>
+        </f:comment>
+    </div>
+</div>
 
 <script>
     (function () {
-        const backLink = document.getElementById('backLink');
-        if (!backLink) return;
+        const backLinks = document.querySelectorAll(
+            '[id^="backLink-"], [id^="backLink-add-"]'
+        );
 
-        backLink.addEventListener('click', function (e) {
-            e.preventDefault();
+        if (!backLinks.length) return;
 
-            const ref = document.referrer || '';
+        backLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            // jeżeli referrer to TYPO3 backend → NIE używaj history.back
-            if (
-                ref &&
-                ref.includes(window.location.hostname) &&
-                !ref.includes('/typo3/')
-            ) {
-                window.history.back();
-            } else {
-                window.location.href = '/work';
-            }
+                if (document.referrer && window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = '/work';
+                }
+            });
         });
     })();
 </script>
+

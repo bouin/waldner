@@ -13,16 +13,8 @@
 
 <!-- Primary (hero) nav: sits above first image but lower z-index than following sections so it can be covered -->
 
-<f:if condition="{page.pageRecord.pid}== 2">
+<f:if condition="{page.pageRecord.pid}== 1 || {page.pageRecord.uid}== 1">
     <f:then>
-        <header id="heroNav" class="fixed top-0 left-0 right-0 z-10">
-            <div class="mx-auto">
-                <div class="mainnav-for-a flex items-center gap-8 px-3 sm:px-3 py-1 justify-between">
-                </div>
-            </div>
-        </header>
-    </f:then>
-    <f:else>
         <header id="heroNav" class="fixed top-0 left-0 right-0 z-10">
             <div class="mx-auto">
                 <div class="mainnav-for-a flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-8 px-2 sm:px-3 py-1 sm:justify-between">
@@ -41,7 +33,14 @@
                 </div>
             </div>
         </header>
-
+    </f:then>
+    <f:else>
+        <header id="heroNav" class="fixed top-0 left-0 right-0 z-10">
+            <div class="mx-auto">
+                <div class="mainnav-for-a flex items-center gap-8 px-3 sm:px-3 py-1 justify-between">
+                </div>
+            </div>
+        </header>
     </f:else>
 </f:if>
 

@@ -189,7 +189,7 @@ page {
         #flowbite = EXT:site_package/Resources/Public/JavaScript/libs/flowbite.min.js
         #swiper = EXT:site_package/Resources/Public/JavaScript/libs/swiper-bundle.min.js
         site_package_scripts = EXT:site_package/Resources/Public/JavaScript/app.js
-        
+        site_package_scripts.defer = 1
     }
 }
 
@@ -202,3 +202,43 @@ lib.renderAnyRecord {
   tables = tt_content
 }
 
+lib.allWorkDetails = HMENU
+lib.allWorkDetails {
+  special = directory
+  special.value = 2
+
+  1 = TMENU
+  1 {
+    expAll = 1
+
+    NO = 1
+    NO {
+      doNotLinkIt = 1
+      stdWrap.wrap = <div class="work-group-title col-span-full md:col-span-2">|</div>
+    }
+
+    IFSUB = 1
+    IFSUB {
+      doNotLinkIt = 1
+      stdWrap.wrap = <div class="work-group-title col-span-full md:col-span-2">|</div>
+    }
+  }
+
+  2 = TMENU
+  2 {
+    NO = 1
+    NO {
+      wrapItemAndSub = <li>|</li>
+      ATagTitle.field = title
+    }
+
+    ACT < .NO
+    ACT {
+      wrapItemAndSub = <li class="active">|</li>
+    }
+
+    CUR < .ACT
+  }
+
+  wrap = <ul class="work-detail-nav columns-1 md:columns-2 gap-12">|</ul>
+}
